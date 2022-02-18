@@ -19,7 +19,7 @@
 
 - please ensure the enivronment variables are set
    
-   - REACT_APP_WEATHER_KEY= " " // eneter your weather key [Link to Weather](https://openweathermap.org/forecast16)
+   - REACT_APP_WEATHER_KEY= " " // enter your weather key [Link to Weather](https://openweathermap.org/forecast16)
     
 
 - npm init
