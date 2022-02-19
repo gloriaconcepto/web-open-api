@@ -2,9 +2,9 @@ import React, { memo, useEffect, useMemo, useState } from "react";
 
 const SearchBarComponent = (props) => {
     return (
-        <div className="input-group">
+        <div className="input-group position-search-bar">
             <div className="form-outline">
-                <small className="form-label" for="form1">
+                <small className="form-label" for="form1" style={{ fontStyle: "italic" }}>
                     Enter city name e.g Tartu
                 </small>
                 <input type="text" id="form1" className="form-control" />

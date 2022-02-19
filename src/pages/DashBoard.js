@@ -5,13 +5,15 @@ import SearchBarComponent from "../utilities/SearchBar";
 const ManageDashBoard = memo((props) => {
     return (
         <section className="col-12">
-            <h1 className="weather-header">Weather Forcast App</h1>
+            <h1 className="weather-header" style={{ marginBottom: "3rem" }}>
+                Weather Forcast App
+            </h1>
             <section>
-                <SearchBarComponent/>
+                <SearchBarComponent />
             </section>
-            <section>
+            {/* <section>
                 <CardDisplay />
-            </section>
+            </section> */}
             <section>
                 <WeatherChart />
             </section>

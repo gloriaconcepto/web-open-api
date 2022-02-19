@@ -1,15 +1,45 @@
 .App {
   text-align: center;
+  
 }
 
 .weather-header{
   color:#29a3de;
   font-weight:bolder;
+  
 }
 
 .search-bar-button{
   height: fit-content;
-  margin-top: 21px;
+  margin-top: 22px;
+}
+
+.position-search-bar{
+  margin-left: 38%;
 }
 
 
+@media (max-width:480px)  { 
+  .position-search-bar{
+    margin-left: 25%;
+  }
+  .weather-header{
+    margin-left: 19%;
+  }
+}
+@media (min-width:481px)  and (max-width:600px){ 
+  .position-search-bar{
+    margin-left: 38%;
+  }
+  .weather-header{
+     margin-left: 18%;
+  }
+}
+@media (min-width:601px)  and (max-width:800px) { 
+  .position-search-bar{
+   
+    margin-left: 26%;
+  }
+}
+@media (min-width:1025px) { /* big landscape tablets, laptops, and desktops */ }
+@media (min-width:1281px) { /* hi-res laptops and desktops */ }
