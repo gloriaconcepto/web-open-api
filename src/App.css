@@ -7,5 +7,9 @@
   font-weight:bolder;
 }
 
+.search-bar-button{
+  height: fit-content;
+  margin-top: 21px;
+}
 
 
