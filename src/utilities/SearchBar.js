@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { useState } from "react";
 
 const SearchBarComponent = (props) => {
     const [disabled, setDisabled] = useState(true);
