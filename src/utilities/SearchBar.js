@@ -52,9 +52,7 @@ const SearchBarComponent = (props) => {
             <button type="button" className="btn btn-primary search-bar-button" disabled={disabled} onClick={queryWeather}>
                 <i className="bi bi-search" style={{ fontSize: 18, color: "white" }}></i>
             </button>
-            {/* <p>
-              
-            </p> */}
+          
         </div>
     );
 };
