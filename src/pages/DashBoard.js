@@ -7,12 +7,14 @@ import { getCountryLatapiUrl, getWeatherapiUrl } from "../constants/urlConstants
 const ManageDashBoard = memo((props) => {
     const [weatherData, setWeatherData] = useState([]);
     const [isError, setError] = useState(false);
+    const [cityLocation, setCityLocation] = useState("");
     const weatherApiKey = process.env.REACT_APP_WEATHER_KEY;
     const getWeatherForcast = (cityName) => {
         getCityLatLon(cityName)
             .then((data) => getCityWeatherData(data[0].lat, data[0].lon))
             .then((weatherResponse) => {
                 setWeatherData(weatherResponse);
+                setCityLocation(cityName);
             })
             .catch((error) => {
                 setError(true);
@@ -40,13 +42,13 @@ const ManageDashBoard = memo((props) => {
             lat: lat,
             lon: lon,
             unit: "metric",
+            exclude: "hourly,minutely,alerts",
             appid: weatherApiKey,
         };
         try {
             const weatherDataResponse = await getWeatherDataService(getWeatherapiUrl, weatherParam, "GET");
-            console.log(weatherDataResponse);
+
             if (weatherDataResponse.ok && weatherDataResponse.status === 200) {
-                //console.log({ countryDataResponse });
                 return weatherDataResponse.json();
             }
         } catch (error) {
@@ -59,11 +61,11 @@ const ManageDashBoard = memo((props) => {
             <h1 className="weather-header" style={{ marginBottom: "3rem" }}>
                 Weather Forcast App
             </h1>
-            <section>
+            <section style={{ marginBottom: "2rem" }}>
                 <SearchBarComponent onSearch={getWeatherForcast} />
             </section>
-              <section>
-                <WeatherChart weatherData={weatherData} />
+            <section>
+                <WeatherChart weatherData={weatherData} city={cityLocation} />
             </section>
         </section>
     );
