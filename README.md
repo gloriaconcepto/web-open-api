@@ -1,6 +1,7 @@
 # A  simple web base dashboard that consume open api
 
-
+##
+[Demo](https://weather-data-forcast.firebaseapp.com/)
 
 ## Technologies
 - React.js
@@ -9,10 +10,10 @@
 - javascript
 - Restful Api
 - openweathermap api
-## Design Architecture
+### Design Architecture
+  ![alt text](https://github.com/gloriaconcepto/web-open-api/blob/main/public/web-dashboard-architecture.png)
 
-
-## How to run the app
+### How to run the app
 - clone the app
 
 - create .env file // at the root of your project
@@ -26,6 +27,6 @@
 
 - npm run start
 
-## Unit Test
+### Unit Test
 
 
