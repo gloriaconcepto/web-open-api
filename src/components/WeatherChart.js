@@ -24,6 +24,7 @@ const WeatherChart = memo((props) => {
         }
     }, [weatherData]);
 
+    //function to switch between humidity and temperature
     const changeDataMode = (mode) => {
         if (mode === "Humidity") {
             setDataMode("humidity");

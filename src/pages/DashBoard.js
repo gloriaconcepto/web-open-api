@@ -1,5 +1,5 @@
 import { memo, useEffect, useState } from "react";
-import CardDisplay from "../components/CardDisplay";
+import { geolocated } from "react-geolocated";
 import WeatherChart from "../components/WeatherChart";
 import SearchBarComponent from "../utilities/SearchBar";
 import { getCountryLatitudeCodeService, getWeatherDataService } from "../components/services";
@@ -8,7 +8,25 @@ const ManageDashBoard = memo((props) => {
     const [weatherData, setWeatherData] = useState([]);
     const [isError, setError] = useState(false);
     const [cityLocation, setCityLocation] = useState("");
+    const { isGeolocationEnabled, isGeolocationAvailable, coords } = props;
     const weatherApiKey = process.env.REACT_APP_WEATHER_KEY;
+
+    useEffect(() => {
+        //to verify if the browser support geolocation
+        if (isGeolocationAvailable) {
+            if (isGeolocationEnabled) {
+                //get latitude and longitude
+
+                getInstanceWeatherForcast();
+            } else {
+                alert("Your have to enable your geolocation on the browser setting.Or go ahead and used the search bar ");
+            }
+        } else {
+            alert("Your browser does not support geolocaion.But never mind we got you cover go ahead and used the search bar. ");
+        }
+    }, [coords]);
+
+    // function to get the actual weather forcast with combination of two functions
     const getWeatherForcast = (cityName) => {
         getCityLatLon(cityName)
             .then((data) => getCityWeatherData(data[0].lat, data[0].lon))
@@ -21,7 +39,7 @@ const ManageDashBoard = memo((props) => {
             });
     };
 
-    // get country latitude and longititude
+    // function to get country latitude and longititude
     const getCityLatLon = async (city) => {
         let cityParam = {
             q: city,
@@ -36,7 +54,7 @@ const ManageDashBoard = memo((props) => {
             setError(true);
         }
     };
-    //get the weather data
+    //function to get the weather data
     const getCityWeatherData = async (lat, lon) => {
         let weatherParam = {
             lat: lat,
@@ -52,10 +70,42 @@ const ManageDashBoard = memo((props) => {
                 return weatherDataResponse.json();
             }
         } catch (error) {
-            console.log(error);
+            setError(true);
         }
     };
-    useEffect(() => {}, []);
+
+    //function to get city name from the weatherForcast api
+    const getString = (str) => {
+        try {
+            let stringToArr = Array.from(String(str), String);
+            let city = "";
+            let hasPassDash = false;
+
+            for (let i = 0; i < stringToArr.length; i++) {
+                if (hasPassDash) {
+                    city = city + stringToArr[i];
+                }
+                if (stringToArr[i] === "/") {
+                    hasPassDash = true;
+                }
+            }
+            setCityLocation(city);
+        } catch (error) {
+            setError(true);
+        }
+    };
+
+    // function to get the weather forcast for your location
+    const getInstanceWeatherForcast = () => {
+        if (coords && coords.latitude && coords.longitude) {
+            console.log("latitude", coords.latitude);
+            console.log("longitude", coords.longitude);
+            getCityWeatherData(coords.latitude, coords.longitude).then((response) => {
+                setWeatherData(response);
+                getString(response.timezone);
+            });
+        }
+    };
     return (
         <section className="col-12">
             <h1 className="weather-header" style={{ marginBottom: "3rem" }}>
@@ -71,4 +121,9 @@ const ManageDashBoard = memo((props) => {
     );
 });
 
-export default ManageDashBoard;
+export default geolocated({
+    positionOptions: {
+        enableHighAccuracy: false,
+    },
+    userDecisionTimeout: 5000,
+})(ManageDashBoard);

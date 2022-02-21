@@ -37,18 +37,7 @@ const BarChart = memo((props) => {
                                 borderWidth: 0.5,
                             },
                         ],
-                        // datasets: [
-                        //     {
-                        //         label: "Day-1",
-                        //         data: { "Day-1": 1000 },
-                        //         backgroundColor: "rgba(255, 99, 132, 0.5)",
-                        //     },
-                        //     {
-                        //         label: "Day-2",
-                        //         data: { "Day-2": 100 },
-                        //         backgroundColor: "rgba(53, 162, 235, 0.5)",
-                        //     },
-                        // ],
+                       
                     }}
                 />
             ) : null}

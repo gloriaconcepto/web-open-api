@@ -6,6 +6,7 @@ const SearchBarComponent = (props) => {
     const [showErrrorMessage, setShowErrorMessage] = useState(false);
     const { onSearch } = props;
     let stringRex = /^[A-Za-z]+$/;
+    //capture the value as user types
     const onChange = (e) => {
         if (e.target.value.length >= 1) {
             if (!stringRex.test(e.target.value)) {
@@ -21,6 +22,8 @@ const SearchBarComponent = (props) => {
 
         setSearchWord(e.target.value);
     };
+
+    //do validation once search text is not on focus
     const onBlur = () => {
         if (searchWord.length === 0) {
             setDisabled(true);
