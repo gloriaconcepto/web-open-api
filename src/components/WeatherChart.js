@@ -1,4 +1,4 @@
-import React, { memo, useEffect, useMemo, useState } from "react";
+import React, { memo, useEffect,useState } from "react";
 import BarChart from "../utilities/BarChart";
 import DropDownMenus from "../utilities/DropDown";
 const WeatherChart = memo((props) => {

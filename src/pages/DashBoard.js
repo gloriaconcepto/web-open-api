@@ -13,6 +13,7 @@ const ManageDashBoard = memo((props) => {
 
     useEffect(() => {
         //to verify if the browser support geolocation
+      
         if (isGeolocationAvailable) {
             if (isGeolocationEnabled) {
                 //get latitude and longitude
@@ -24,7 +25,7 @@ const ManageDashBoard = memo((props) => {
         } else {
             alert("Your browser does not support geolocaion.But never mind we got you cover go ahead and used the search bar. ");
         }
-    }, [coords]);
+    }, [coords,isGeolocationAvailable,isGeolocationEnabled]);
 
     // function to get the actual weather forcast with combination of two functions
     const getWeatherForcast = (cityName) => {
@@ -98,8 +99,7 @@ const ManageDashBoard = memo((props) => {
     // function to get the weather forcast for your location
     const getInstanceWeatherForcast = () => {
         if (coords && coords.latitude && coords.longitude) {
-            console.log("latitude", coords.latitude);
-            console.log("longitude", coords.longitude);
+           
             getCityWeatherData(coords.latitude, coords.longitude).then((response) => {
                 setWeatherData(response);
                 getString(response.timezone);
@@ -111,6 +111,9 @@ const ManageDashBoard = memo((props) => {
             <h1 className="weather-header" style={{ marginBottom: "3rem" }}>
                 Weather Forcast App
             </h1>
+            {
+                isError&&<h1>Service Unavialable at the moment</h1>
+            }
             <section style={{ marginBottom: "2rem" }}>
                 <SearchBarComponent onSearch={getWeatherForcast} />
             </section>
