@@ -18,7 +18,8 @@
      - git clone https://github.com/gloriaconcepto/web-open-api.git
 
 - create .env file // at the root of your project
-      - ![alt text](https://github.com/gloriaconcepto/web-open-api/blob/main/public/rootFiles.png)
+  
+  ![alt text](https://github.com/gloriaconcepto/web-open-api/blob/main/public/rootFiles.png)
 
 - please ensure the enivronment variables are set
     
