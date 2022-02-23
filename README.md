@@ -14,6 +14,8 @@
   ![alt text](https://github.com/gloriaconcepto/web-open-api/blob/main/public/web-dashboard-architecture.png)
 
 ### How to run the app locally
+- Please ensure that you have at least >14.0.0 node.js version running on your system
+
 - clone the app or download it.
      - git clone https://github.com/gloriaconcepto/web-open-api.git
 
@@ -39,6 +41,8 @@
 - For unit testing
 
 - npm run test
+
+- if there is an issues especially with lower node versions pls run this command  "npm i -D --exact jest-watch-typeahead@0.6.5"  
 
 ### Possible Design
 - Accesible design was not implemented
