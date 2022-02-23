@@ -3,12 +3,12 @@ import BarChart from "../utilities/BarChart";
 import DropDownMenus from "../utilities/DropDown";
 import { dataextractor } from "../utilities/helperFunctions";
 
-const WeatherChart = memo((props) => {
+const MockWeatherChart = memo((props) => {
     const { weatherData, city } = props;
     const [dataMode, setDataMode] = useState("humidity");
-    const [maxTempData, setMaxTempData] = useState([]);
-    const [dataLabel, setDataLabel] = useState([]);
-    const [dataHumidity, setDataHumidity] = useState([]);
+    const [maxTempData, setMaxTempData] = useState([2,3]);
+    const [dataLabel, setDataLabel] = useState(['Day-1','Day-2']);
+    const [dataHumidity, setDataHumidity] = useState([1,2]);
 
     useEffect(() => {
         if (weatherData && weatherData.daily) {
@@ -47,4 +47,4 @@ const WeatherChart = memo((props) => {
     );
 });
 
-export default WeatherChart;
+export default MockWeatherChart;

@@ -45,17 +45,16 @@ const SearchBarComponent = (props) => {
                 <small className="form-label" style={{ fontStyle: "italic" }}>
                     Enter city name e.g Tartu
                 </small>
-                <input type="text" id="form1" className="form-control" onBlur={() => onBlur()} onChange={onChange} />
+                <input type="text" id="form1" className="form-control" onBlur={() => onBlur()} onChange={onChange} data-testid="form-input-id"/>
                 {showErrrorMessage && (
-                    <small className="form-label" style={{ fontStyle: "italic", color: "red" }}>
+                    <small className="form-label" style={{ fontStyle: "italic", color: "red" }} data-testid="form-input-error">
                         City name must not contain number
                     </small>
                 )}
             </div>
-            <button type="button" className="btn btn-primary search-bar-button" disabled={disabled} onClick={queryWeather}>
+            <button type="button" className="btn btn-primary search-bar-button" disabled={disabled} onClick={queryWeather} data-testid="search-button-id">
                 <i className="bi bi-search" style={{ fontSize: 18, color: "white" }}></i>
             </button>
-          
         </div>
     );
 };
