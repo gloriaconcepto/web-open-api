@@ -45,7 +45,7 @@
 - if there is an issues especially with lower node versions pls run this command  "npm i -D --exact jest-watch-typeahead@0.6.5"  
 
 ### Possible Design
-- Accesible design was not implemented
+- Accessible design was not implemented
 - No flux design was consider (No redux,react.context) to help prevent props drilling and no state management control
 - No integration test was done with tools with like cypress etc,just simple user unit test
 
